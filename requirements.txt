@@ -1,0 +1,14 @@
+backtrader
+fastapi
+langchain
+numpy
+optuna
+pandas
+prophet
+scikit-learn
+stable-baselines3
+torch
+tensorflow
+yfinance
+vaderSentiment
+transformers
