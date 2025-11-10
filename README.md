@@ -33,29 +33,7 @@ ai_trading_bot/
 
 ## Getting Started
 
-> **Python version**: The full dependency stack currently supports Python 3.10–3.12. Newer releases
-> (3.13+) work for the core modules, but several optional ML libraries do not yet publish wheels.
-> On macOS, ensure that the `python3` command points to a supported version (e.g. via Homebrew
-> `python@3.11`).
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-python -m ai_trading_bot.main
-```
-
-If you are constrained to Python 3.13 or newer, `pip` automatically skips the optional packages that
-have not shipped compatible wheels (`torch`, `tensorflow`, `prophet`, `stable-baselines3`). The bot
-will still run with the core rule-based strategies, but advanced ML and forecasting features remain
-disabled until those libraries add support. On supported Python versions you can install the full
-stack with the same command.
-
-By default the bot downloads one year of hourly BTC/USDT data via `yfinance`. Optional components
-(FinBERT, Prophet, LangChain, Backtrader, etc.) rely on the dependencies declared in
-`requirements.txt` and may require additional system packages as described in their respective
-documentation.
 
 ## Configuration
 
