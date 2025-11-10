@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.parquet
+ai_trading_bot/data/cache/
+ai_trading_bot/data/logs/
+.env
+.venv/

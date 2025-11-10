@@ -1,0 +1,6 @@
+# Optional heavy ML/forecasting dependencies.
+# Install only on Python 3.10-3.12 or other environments with supported wheels.
+prophet>=1.1; python_version < "3.13"
+stable-baselines3>=2.3; python_version < "3.13"
+torch>=2.2; python_version < "3.13"
+tensorflow>=2.13; python_version < "3.13"
