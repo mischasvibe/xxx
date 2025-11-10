@@ -33,6 +33,7 @@ ai_trading_bot/
 
 ## Getting Started
 
+
 > **Python version**: The full dependency stack currently supports Python 3.10–3.12. Newer releases
 > (3.13+) work for the core modules, but several optional ML libraries do not yet publish wheels.
 > On macOS, ensure that the `python3` command points to a supported version (e.g. via Homebrew
@@ -75,6 +76,9 @@ By default the bot downloads one year of hourly BTC/USDT data via `yfinance`. Op
 (FinBERT, Prophet, LangChain, Backtrader, etc.) rely on the dependencies declared in
 `requirements.txt` and may require additional system packages as described in their respective
 documentation.
+
+
+
 
 ## Configuration
 
