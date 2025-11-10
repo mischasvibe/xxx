@@ -33,16 +33,7 @@ ai_trading_bot/
 
 ## Getting Started
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python -m ai_trading_bot.main
-```
 
-By default the bot downloads one year of hourly BTC/USDT data via `yfinance`. The optional components
-(FinBERT, Prophet, LangChain, Backtrader) require additional dependencies that can be installed as
-needed.
 
 ## Configuration
 
