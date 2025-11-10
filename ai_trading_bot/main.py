@@ -3,6 +3,16 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Dict, List, Optional
 
+from .utils.dependency_check import ensure_required_packages
+
+ensure_required_packages([
+    "pandas",
+    "numpy",
+    "sklearn",
+    "backtrader",
+])
+
+=======
 import pandas as pd
 
 from .backtest.backtest_runner import BacktestRunner
