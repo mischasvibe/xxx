@@ -5,6 +5,13 @@ from __future__ import annotations
 import sys
 from importlib import util as importlib_util
 from typing import Iterable, Tuple
+
+_HELP_MESSAGE = (
+    "Missing required packages: {missing}.\n"
+    "Activate your virtual environment and run `python -m pip install -r requirements.txt`.\n"
+    "If you previously installed optional ML libraries, ensure you are on Python 3.10-3.12 "
+    "or install them via `python -m pip install -r requirements-ml.txt`."
+
 """Runtime dependency checks for core modules."""
 
 from __future__ import annotations

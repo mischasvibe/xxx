@@ -31,6 +31,7 @@ class FinBERTSentimentAnalyzer:
         if not self.is_available():
 
 
+
     def _load(self) -> None:
         if AutoModelForSequenceClassification is None:
             raise ImportError(
@@ -54,6 +55,8 @@ class FinBERTSentimentAnalyzer:
             return {"positive": 0.0, "neutral": 1.0, "negative": 0.0}
 
 
+
+ 
         self._load()
         assert self._model is not None and self._tokenizer is not None
         inputs = self._tokenizer(text, return_tensors="pt", truncation=True, padding=True)

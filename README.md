@@ -38,6 +38,22 @@ ai_trading_bot/
 > `python3` to a supported version (for example Homebrew `python@3.11`) before creating the virtual
 > environment.
 
+### 1. Verify your interpreter
+
+Make sure the `python3` on your `PATH` points to a supported version:
+
+```bash
+python3 --version
+```
+
+If the output is **3.13** or newer, explicitly invoke the supported interpreter when creating the
+virtual environment, for example `/usr/local/bin/python3.11` on macOS Homebrew installs.
+
+### 2. Create the virtual environment
+
+Run each command below **one at a time** in your shell. Copying the whole block at once can trigger
+errors in `zsh`, so prefer pasting and executing line-by-line:
+
 Run each command below individually in your shell (copying the block verbatim into zsh will execute
 the lines sequentially):
 
@@ -50,6 +66,11 @@ the lines sequentially):
 ```bash
 # (Optional) remove any previously created virtual environment
 rm -rf .venv
+
+python3.11 -m venv .venv  # replace with the supported interpreter path on your system
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 
 python3.11 -m venv .venv
 
@@ -64,6 +85,8 @@ The default requirements install only the cross-platform dependencies so the cor
 CPython 3.10–3.12. Optional, heavy ML packages remain in `requirements-ml.txt`. Install them only
 when using a supported Python (3.10–3.12) or when wheels are available for your platform:
 
+```bash
+python -m pip install -r requirements-ml.txt
 any interpreter that provides wheels (including Python 3.13+). Optional, heavy ML packages remain in
 `requirements-ml.txt`. Install them only when using a supported Python (3.10–3.12) or when wheels are
 available for your platform:
@@ -87,6 +110,7 @@ environment for full machine-learning, forecasting, and FinBERT sentiment suppor
   newer interpreters yet. Skip `requirements-ml.txt` or downgrade to Python 3.10–3.12. FinBERT
   sentiment falls back to VADER automatically when the optional dependencies are missing.
 
+
 This adds `prophet`, `stable-baselines3`, `torch`, and `tensorflow` back into the environment for full
 machine-learning and forecasting support.
 
@@ -104,6 +128,7 @@ By default the bot downloads one year of hourly BTC/USDT data via `yfinance`. Op
 (FinBERT, Prophet, LangChain, Backtrader, etc.) rely on the dependencies declared in
 `requirements.txt` and may require additional system packages as described in their respective
 documentation.
+
 
 
 
