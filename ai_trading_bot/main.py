@@ -3,6 +3,10 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Dict, List, Optional
 
+from .utils.dependency_check import ensure_python_version, ensure_required_packages
+
+ensure_python_version((3, 10), (3, 13))
+
 from .utils.dependency_check import ensure_required_packages
 
 ensure_required_packages([
@@ -12,7 +16,6 @@ ensure_required_packages([
     "backtrader",
 ])
 
-=======
 import pandas as pd
 
 from .backtest.backtest_runner import BacktestRunner

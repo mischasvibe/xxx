@@ -33,6 +33,14 @@ ai_trading_bot/
 
 ## Getting Started
 
+> **Python version**: Use Python **3.10–3.12**. Core dependencies such as `scikit-learn` currently do
+> not publish wheels for 3.13+ or 3.14, so installation on newer interpreters fails. On macOS, link
+> `python3` to a supported version (for example Homebrew `python@3.11`) before creating the virtual
+> environment.
+
+Run each command below individually in your shell (copying the block verbatim into zsh will execute
+the lines sequentially):
+
 
 > **Python version**: The full dependency stack currently supports Python 3.10–3.12. Newer releases
 > (3.13+) work for the core modules, but several optional ML libraries do not yet publish wheels.
@@ -43,6 +51,8 @@ ai_trading_bot/
 # (Optional) remove any previously created virtual environment
 rm -rf .venv
 
+python3.11 -m venv .venv
+
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
@@ -51,6 +61,9 @@ python -m ai_trading_bot.main
 ```
 
 The default requirements install only the cross-platform dependencies so the core bot runs on
+CPython 3.10–3.12. Optional, heavy ML packages remain in `requirements-ml.txt`. Install them only
+when using a supported Python (3.10–3.12) or when wheels are available for your platform:
+
 any interpreter that provides wheels (including Python 3.13+). Optional, heavy ML packages remain in
 `requirements-ml.txt`. Install them only when using a supported Python (3.10–3.12) or when wheels are
 available for your platform:
@@ -58,6 +71,21 @@ available for your platform:
 ```bash
 pip install -r requirements-ml.txt
 ```
+
+This adds `prophet`, `stable-baselines3`, `torch`, `tensorflow`, and `transformers` back into the
+environment for full machine-learning, forecasting, and FinBERT sentiment support.
+
+### Troubleshooting install issues
+
+- **`SystemExit: This project currently supports Python versions between 3.10 (inclusive) and 3.13 (exclusive)`** – Switch to
+  Python 3.10–3.12 and recreate the virtual environment. On macOS you can install Homebrew
+  `python@3.11` and run `python3.11 -m venv .venv`.
+- **`ModuleNotFoundError: No module named 'pandas'`** – Dependency installation stopped early,
+  typically because an unsupported Python version was used. Remove `.venv`, ensure you are using
+  Python 3.10–3.12, upgrade `pip`, and reinstall via the commands above.
+- **`Could not find a version that satisfies the requirement torch`** – Torch does not ship wheels for
+  newer interpreters yet. Skip `requirements-ml.txt` or downgrade to Python 3.10–3.12. FinBERT
+  sentiment falls back to VADER automatically when the optional dependencies are missing.
 
 This adds `prophet`, `stable-baselines3`, `torch`, and `tensorflow` back into the environment for full
 machine-learning and forecasting support.

@@ -1,3 +1,10 @@
+"""Runtime dependency and interpreter checks for the trading bot."""
+
+from __future__ import annotations
+
+import sys
+from importlib import util as importlib_util
+from typing import Iterable, Tuple
 """Runtime dependency checks for core modules."""
 
 from __future__ import annotations
@@ -11,6 +18,27 @@ _HELP_MESSAGE = (
     "If you previously installed optional ML libraries, ensure you are on Python 3.10-3.12 "
     "or install them via `pip install -r requirements-ml.txt`."
 )
+
+_PYTHON_HELP = (
+    "This project currently supports Python versions between {min_ver} (inclusive) and {max_ver} "
+    "(exclusive).\n"
+    "Install a supported interpreter (for example Python 3.11 via Homebrew on macOS) "
+    "and recreate your virtual environment before installing dependencies."
+)
+
+
+def ensure_python_version(
+    minimum: Tuple[int, int],
+    maximum_exclusive: Tuple[int, int],
+) -> None:
+    """Abort execution when the interpreter version is outside the supported range."""
+
+    current = sys.version_info[:2]
+    if current < minimum or current >= maximum_exclusive:
+        min_str = ".".join(map(str, minimum))
+        max_str = ".".join(map(str, maximum_exclusive))
+        raise SystemExit(_PYTHON_HELP.format(min_ver=min_str, max_ver=max_str))
+
 
 
 def ensure_required_packages(packages: Iterable[str]) -> None:
